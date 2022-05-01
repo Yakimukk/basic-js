@@ -32,6 +32,7 @@ const HALF_LIFE_PERIOD = 5730;
     return false
   }    
   return t
+}
 
 module.exports = {
   dateSample

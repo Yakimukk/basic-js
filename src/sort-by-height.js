@@ -18,7 +18,7 @@ const { NotImplementedError } = require('../extensions/index.js');
       newArr.splice(i, 0, -1)
     }
   }
-  return arr
+  return newArr
 }
 
 module.exports = {

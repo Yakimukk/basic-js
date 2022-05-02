@@ -11,14 +11,16 @@ const { NotImplementedError } = require('../extensions/index.js');
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  * 
  */
+ const getValide = (date) => {
+  try {
+    return new Date(date.getTime())
+  } catch {
+    throw new Error('Invalid date!')
+  }
+}
 function getSeason(date) {
   if (!date) {
     return 'Unable to determine the time of year!'
-  }
-  try {
-    date.getTime()
-  } catch (error) {
-    throw new Error("Invalid date!")
   }
   getValide(date)
   if (date.getMonth() >= 2 && date.getMonth() <= 4) {

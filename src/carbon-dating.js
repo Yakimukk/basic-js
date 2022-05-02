@@ -22,7 +22,7 @@ const HALF_LIFE_PERIOD = 5730;
   if (typeof(sampleActivity) == 'string' && sampleActivity != '') {
     sampleActivity = Number(sampleActivity)
     if (sampleActivity != NaN && sampleActivity < 15 && sampleActivity > 0) {
-      t = Math.log(MODERN_ACTIVITY / sampleActivity) / (0.693 / HALF_LIFE_PERIOD)
+      t = Math.log(MODERN_ACTIVITY / +sampleActivity) / (0.693 / HALF_LIFE_PERIOD)
     }
     else {
       return false

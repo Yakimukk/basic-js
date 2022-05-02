@@ -25,14 +25,36 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
  function minesweeper(matrix) {
   let result = (Array.from(matrix, arr => Array.from(arr, el => 0)))
-  for (let i = 0; i < matrix.length; i++) {
+  for (let i = 0; i<matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
-      if ((matrix[i] && matrix[i][j+1]) || (matrix[i] && matrix[i][j-1]) || (matrix[i+1] && matrix[i+1][j-1]) || (matrix[i+1] && matrix[i+1][j]) || (matrix[i+1] && matrix[i+1][j+1]) || (matrix[i-1] && matrix[i-1][j+1]) || (matrix[i-1] && matrix[i-1][j]) || (matrix[i-1] && matrix[i-1][j-1])){
+      if (matrix[i] && matrix[i][j+1]) {
+        result[i][j]++
+      }
+      if (matrix[i] && matrix[i][j-1]) {
+        result[i][j]++
+      }
+      if (matrix[i+1] && matrix[i+1][j-1]) {
+        result[i][j]++
+      }
+      if (matrix[i+1] && matrix[i+1][j]) {
+        result[i][j]++
+      }
+      if (matrix[i+1] && matrix[i+1][j+1]) {
+        result[i][j]++
+      }
+      if (matrix[i-1] && matrix[i-1][j+1]) {
+        result[i][j]++
+      }
+      if (matrix[i-1] && matrix[i-1][j]) {
+        result[i][j]++
+      }
+      if (matrix[i-1] && matrix[i-1][j-1]) {
         result[i][j]++
       }
     }
   }
   return result
+ 
 }
 
 module.exports = {

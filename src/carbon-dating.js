@@ -18,22 +18,17 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
  function dateSample(sampleActivity) {
-  let t = 0
-  if (typeof(sampleActivity) == 'string' && sampleActivity != '') {
-    sampleActivity = Number(sampleActivity)
-    if (sampleActivity != NaN && sampleActivity < 15 && sampleActivity > 0) {
-      t = Math.log(MODERN_ACTIVITY / +sampleActivity) / (0.693 / HALF_LIFE_PERIOD)
-    }
-    else {
-      return false
-    }
-  }
-  else {
+  if (
+    isNaN(+sampleActivity) ||
+    arguments.length == 0 ||
+    sampleActivity <= 0 ||
+    typeof sampleActivity != "string" ||
+    Math.log(MODERN_ACTIVITY / +sampleActivity) < 0
+  )
     return false
-  }    
-  return t
+  return Math.ceil(Math.log(MODERN_ACTIVITY / +sampleActivity) / (0.693 / HALF_LIFE_PERIOD))
 }
 
 module.exports = {
   dateSample
-}
+};
